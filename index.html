@@ -39,110 +39,90 @@
 
         <header class="top-header">
 
-            <h1>Dashboard</h1>
+            <h1>Production</h1>
 
             <span>Industrial Engineering</span>
 
         </header>
 
 
-        <!-- Dashboard -->
+        <!-- Production Entry -->
 
         <section class="dashboard">
 
-            <h2>Production Overview</h2>
+            <h2>Production Entry</h2>
 
 
-            <!-- KPI Cards -->
+            <div class="production-form">
 
-            <div class="card-container">
-
-                <div class="card">
-
-                    <h3>Total Target</h3>
-
-                    <p>10,000</p>
-
-                </div>
+                <label>
+                    Date
+                    <input type="date" id="date">
+                </label>
 
 
-                <div class="card">
+                <label>
+                    Unit
+                    <select id="unit">
 
-                    <h3>Total Production</h3>
+                        <option>PJL</option>
+                        <option>PWL</option>
+                        <option>PATL-A</option>
+                        <option>PATL-B</option>
 
-                    <p>9,500</p>
+                    </select>
+                </label>
 
-                </div>
+
+                <label>
+                    Line
+                    <input type="text" id="line" placeholder="Line-01">
+                </label>
 
 
-                <div class="card">
+                <label>
+                    Style
+                    <input type="text" id="style" placeholder="ST-1001">
+                </label>
+
+
+                <label>
+                    Target
+                    <input type="number" id="target" placeholder="1000">
+                </label>
+
+
+                <label>
+                    Production
+                    <input type="number" id="production" placeholder="950">
+                </label>
+
+
+                <button onclick="calculateEfficiency()">
+                    Calculate Efficiency
+                </button>
+
+
+                <div class="result">
 
                     <h3>Efficiency</h3>
 
-                    <p>95%</p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <h3>Active Lines</h3>
-
-                    <p>24</p>
+                    <p id="efficiency">0%</p>
 
                 </div>
 
             </div>
 
 
-            <!-- Production Table -->
-
-            <h2>Production Summary</h2>
-
-            <table>
-
-                <tr>
-
-                    <th>Line</th>
-                    <th>Target</th>
-                    <th>Actual</th>
-                    <th>Efficiency</th>
-
-                </tr>
-
-                <tr>
-
-                    <td>Line 01</td>
-                    <td>1,000</td>
-                    <td>950</td>
-                    <td>95%</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Line 02</td>
-                    <td>1,000</td>
-                    <td>920</td>
-                    <td>92%</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Line 03</td>
-                    <td>1,000</td>
-                    <td>980</td>
-                    <td>98%</td>
-
-                </tr>
-
-            </table>
-
         </section>
 
     </main>
 
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
 </body>
 
-</html> 
+</html>
