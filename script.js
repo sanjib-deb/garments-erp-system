@@ -176,3 +176,26 @@ function editProduction(index) {
     displayRecords();
 
 }
+
+function deleteProduction(index) {
+
+    let records =
+        JSON.parse(localStorage.getItem("productionRecords")) || [];
+
+    let confirmDelete =
+        confirm("Are you sure you want to delete this record?");
+
+    if (confirmDelete) {
+
+        records.splice(index, 1);
+
+        localStorage.setItem(
+            "productionRecords",
+            JSON.stringify(records)
+        );
+
+        displayRecords();
+
+    }
+
+}
