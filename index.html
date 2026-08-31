@@ -102,6 +102,10 @@
                     Calculate Efficiency
                 </button>
 
+                <button onclick="saveProduction()">
+                   Save Production
+                </button>
+
 
                 <div class="result">
 
@@ -110,6 +114,30 @@
                     <p id="efficiency">0%</p>
 
                 </div>
+
+                <h2>Production Records</h2>
+
+                <table>
+
+                <thead>
+
+                 <tr>
+                <th>Date</th>
+                <th>Unit</th>
+                <th>Line</th>
+                <th>Style</th>
+                <th>Target</th>
+                <th>Production</th>
+                <th>Efficiency</th>
+                </tr>
+
+                 </thead>
+
+                <tbody id="productionTable">
+
+                </tbody>
+
+                </table>
 
             </div>
 
