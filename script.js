@@ -81,18 +81,15 @@ function displayRecords() {
     let records =
         JSON.parse(localStorage.getItem("productionRecords")) || [];
 
-
     let table =
         document.getElementById("productionTable");
-
 
     table.innerHTML = "";
 
 
-    records.forEach(function(record) {
+    records.forEach(function(record, index) {
 
         let row = table.insertRow();
-
 
         row.insertCell(0).innerText = record.date;
         row.insertCell(1).innerText = record.unit;
@@ -103,8 +100,79 @@ function displayRecords() {
         row.insertCell(6).innerText =
             record.efficiency + "%";
 
+
+        let actionCell = row.insertCell(7);
+
+
+        let editButton =
+            document.createElement("button");
+
+        editButton.innerText = "Edit";
+
+        editButton.onclick = function() {
+            editProduction(index);
+        };
+
+
+        let deleteButton =
+            document.createElement("button");
+
+        deleteButton.innerText = "Delete";
+
+        deleteButton.onclick = function() {
+            deleteProduction(index);
+        };
+
+
+        actionCell.appendChild(editButton);
+
+        actionCell.appendChild(deleteButton);
+
     });
 
 }
 
 displayRecords();
+function editProduction(index) {
+
+    let records =
+        JSON.parse(localStorage.getItem("productionRecords")) || [];
+
+
+    let record = records[index];
+
+
+    document.getElementById("date").value =
+        record.date;
+
+    document.getElementById("unit").value =
+        record.unit;
+
+    document.getElementById("line").value =
+        record.line;
+
+    document.getElementById("style").value =
+        record.style;
+
+    document.getElementById("target").value =
+        record.target;
+
+    document.getElementById("production").value =
+        record.production;
+
+
+    calculateEfficiency();
+
+
+    records.splice(index, 1);
+
+
+    localStorage.setItem(
+        "productionRecords",
+        JSON.stringify(records)
+    );
+
+
+    displayRecords();
+
+}
