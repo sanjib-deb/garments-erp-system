@@ -1,7 +1,4 @@
-# garments-erp-system
-arments ERP Management System
-
-GARMENTS ERP SYSTEM
+# GARMENTS ERP SYSTEM
 
 About
 This is a Garments ERP learning project.
