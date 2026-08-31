@@ -139,10 +139,12 @@ function saveProduction() {
 // 4. DISPLAY PRODUCTION RECORDS
 // ==================================================
 
-function displayRecords() {
+function displayRecords(filteredRecords = null) {
 
     let records =
-        JSON.parse(
+    filteredRecords !== null
+        ? filteredRecords
+        : JSON.parse(
             localStorage.getItem("productionRecords")
         ) || [];
 
@@ -549,3 +551,58 @@ function updateDashboard() {
 displayRecords();
 
 updateDashboard();
+
+// ==================================================
+// 10. FILTER PRODUCTION RECORDS
+// ==================================================
+
+function filterRecords() {
+
+    let filterDate =
+        document.getElementById("filterDate").value;
+
+    let filterUnit =
+        document.getElementById("filterUnit").value;
+
+
+    let records =
+        JSON.parse(
+            localStorage.getItem("productionRecords")
+        ) || [];
+
+
+    let filteredRecords = records.filter(function(record) {
+
+        let dateMatch =
+            filterDate == "" ||
+            record.date == filterDate;
+
+
+        let unitMatch =
+            filterUnit == "" ||
+            record.unit == filterUnit;
+
+
+        return dateMatch && unitMatch;
+
+    });
+
+
+    displayRecords(filteredRecords);
+
+}
+
+// ==================================================
+// 11. CLEAR PRODUCTION FILTERS
+// ==================================================
+
+function clearFilters() {
+
+    document.getElementById("filterDate").value = "";
+
+    document.getElementById("filterUnit").value = "";
+
+
+    displayRecords();
+
+}

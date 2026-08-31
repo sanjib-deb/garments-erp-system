@@ -3,27 +3,41 @@
 
 <head>
 
+    <!-- ==================================================
+         1. PAGE SETTINGS
+         ================================================== -->
+
     <title>Garments ERP System</title>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-    <!-- Sidebar -->
+
+    <!-- ==================================================
+         2. SIDEBAR NAVIGATION
+         ================================================== -->
 
     <aside class="sidebar">
 
         <h2>GARMENTS ERP</h2>
 
+
         <nav>
 
             <a href="#">Dashboard</a>
+
             <a href="#">Production</a>
+
             <a href="#">Planning</a>
+
             <a href="#">Machine Inventory</a>
+
             <a href="#">Efficiency</a>
+
             <a href="#">Reports</a>
 
         </nav>
@@ -31,11 +45,17 @@
     </aside>
 
 
-    <!-- Main Content -->
+
+    <!-- ==================================================
+         3. MAIN CONTENT AREA
+         ================================================== -->
 
     <main class="main-content">
 
-        <!-- Header -->
+
+        <!-- ==================================================
+             4. PAGE HEADER
+             ================================================== -->
 
         <header class="top-header">
 
@@ -46,112 +66,207 @@
         </header>
 
 
-        <!-- Dashboard KPI -->
 
-<section class="dashboard-kpi">
+        <!-- ==================================================
+             5. DASHBOARD KPI
+             ================================================== -->
 
-    <div class="kpi-card">
-
-        <h3>Total Target</h3>
-
-        <p id="totalTarget">0</p>
-
-    </div>
+        <section class="dashboard-kpi">
 
 
-    <div class="kpi-card">
+            <!-- Total Target -->
 
-        <h3>Total Production</h3>
+            <div class="kpi-card">
 
-        <p id="totalProduction">0</p>
+                <h3>Total Target</h3>
 
-    </div>
+                <p id="totalTarget">0</p>
 
-
-    <div class="kpi-card">
-
-        <h3>Overall Efficiency</h3>
-
-        <p id="overallEfficiency">0%</p>
-
-    </div>
+            </div>
 
 
-    <div class="kpi-card">
+            <!-- Total Production -->
 
-        <h3>Active Lines</h3>
+            <div class="kpi-card">
 
-        <p id="activeLines">0</p>
+                <h3>Total Production</h3>
 
-    </div>
+                <p id="totalProduction">0</p>
 
-</section>
+            </div>
 
 
-        <!-- Production Entry -->
+            <!-- Overall Efficiency -->
+
+            <div class="kpi-card">
+
+                <h3>Overall Efficiency</h3>
+
+                <p id="overallEfficiency">0%</p>
+
+            </div>
+
+
+            <!-- Active Lines -->
+
+            <div class="kpi-card">
+
+                <h3>Active Lines</h3>
+
+                <p id="activeLines">0</p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             6. PRODUCTION ENTRY SECTION
+             ================================================== -->
 
         <section class="dashboard">
+
 
             <h2>Production Entry</h2>
 
 
             <div class="production-form">
 
+
+                <!-- Date -->
+
                 <label>
+
                     Date
-                    <input type="date" id="date">
+
+                    <input
+                        type="date"
+                        id="date"
+                    >
+
                 </label>
 
 
+                <!-- Unit -->
+
                 <label>
+
                     Unit
+
                     <select id="unit">
 
                         <option>PJL</option>
+
                         <option>PWL</option>
+
                         <option>PATL-A</option>
+
                         <option>PATL-B</option>
 
                     </select>
+
                 </label>
 
 
+                <!-- Line -->
+
                 <label>
+
                     Line
-                    <input type="text" id="line" placeholder="Line-01">
+
+                    <input
+                        type="text"
+                        id="line"
+                        placeholder="Line-01"
+                    >
+
                 </label>
 
 
+                <!-- Style -->
+
                 <label>
+
                     Style
-                    <input type="text" id="style" placeholder="ST-1001">
+
+                    <input
+                        type="text"
+                        id="style"
+                        placeholder="ST-1001"
+                    >
+
                 </label>
 
 
+                <!-- Target -->
+
                 <label>
+
                     Target
-                    <input type="number" id="target" placeholder="1000">
+
+                    <input
+                        type="number"
+                        id="target"
+                        placeholder="1000"
+                    >
+
                 </label>
 
+
+                <!-- Production -->
 
                 <label>
+
                     Production
-                    <input type="number" id="production" placeholder="950">
+
+                    <input
+                        type="number"
+                        id="production"
+                        placeholder="950"
+                    >
+
                 </label>
 
+
+
+                <!-- ==================================================
+                     7. PRODUCTION ACTION BUTTONS
+                     ================================================== -->
 
                 <button onclick="calculateEfficiency()">
+
                     Calculate Efficiency
+
                 </button>
 
-                <button id="saveButton" onclick="saveProduction()">
-                     Save Production
+
+                <button
+                    id="saveButton"
+                    onclick="saveProduction()"
+                >
+
+                    Save Production
+
                 </button>
 
-                <button id="updateButton" onclick="updateProduction()" style="display: none;">
+
+                <button
+                    id="updateButton"
+                    onclick="updateProduction()"
+                    style="display: none;"
+                >
+
                     Update Production
+
                 </button>
 
+
+
+                <!-- ==================================================
+                     8. EFFICIENCY RESULT
+                     ================================================== -->
 
                 <div class="result">
 
@@ -161,41 +276,147 @@
 
                 </div>
 
+
+
+                <!-- ==================================================
+                     9. PRODUCTION RECORD FILTER
+                     ================================================== -->
+
                 <h2>Production Records</h2>
+
+
+                <div class="record-filters">
+
+
+                    <!-- Filter by Date -->
+
+                    <label>
+
+                        Filter Date
+
+                        <input
+                            type="date"
+                            id="filterDate"
+                        >
+
+                    </label>
+
+
+                    <!-- Filter by Unit -->
+
+                    <label>
+
+                        Filter Unit
+
+                        <select id="filterUnit">
+
+                            <option value="">
+                                All Units
+                            </option>
+
+                            <option value="PJL">
+                                PJL
+                            </option>
+
+                            <option value="PWL">
+                                PWL
+                            </option>
+
+                            <option value="PATL-A">
+                                PATL-A
+                            </option>
+
+                            <option value="PATL-B">
+                                PATL-B
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- Filter Button -->
+
+                    <button onclick="filterRecords()">
+
+                        Filter
+
+                    </button>
+
+
+                    <!-- Clear Filter Button -->
+
+                    <button onclick="clearFilters()">
+
+                        Clear
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     10. PRODUCTION RECORD TABLE
+                     ================================================== -->
 
                 <table>
 
-                <thead>
 
-                 <tr>
-                <th>Date</th>
-                <th>Unit</th>
-                <th>Line</th>
-                <th>Style</th>
-                <th>Target</th>
-                <th>Production</th>
-                <th>Efficiency</th>
-                </tr>
+                    <!-- Table Header -->
 
-                 </thead>
+                    <thead>
 
-                <tbody id="productionTable">
+                        <tr>
 
-                </tbody>
+                            <th>Date</th>
+
+                            <th>Unit</th>
+
+                            <th>Line</th>
+
+                            <th>Style</th>
+
+                            <th>Target</th>
+
+                            <th>Production</th>
+
+                            <th>Efficiency</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <!-- Table Data -->
+
+                    <tbody id="productionTable">
+
+                    </tbody>
+
 
                 </table>
+
 
             </div>
 
 
         </section>
 
+
     </main>
 
 
-    <!-- JavaScript -->
+
+    <!-- ==================================================
+         11. JAVASCRIPT FILE
+         ================================================== -->
 
     <script src="script.js"></script>
+
 
 </body>
 
