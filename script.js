@@ -44,21 +44,67 @@ function saveProduction() {
     let efficiency = (production / target) * 100;
 
 
-    let table = document.getElementById("productionTable");
+    let record = {
+
+        date: date,
+        unit: unit,
+        line: line,
+        style: style,
+        target: target,
+        production: production,
+        efficiency: efficiency.toFixed(2)
+
+    };
 
 
-    let row = table.insertRow();
+    let records =
+        JSON.parse(localStorage.getItem("productionRecords")) || [];
 
 
-    row.insertCell(0).innerText = date;
-    row.insertCell(1).innerText = unit;
-    row.insertCell(2).innerText = line;
-    row.insertCell(3).innerText = style;
-    row.insertCell(4).innerText = target;
-    row.insertCell(5).innerText = production;
-    row.insertCell(6).innerText =
-        efficiency.toFixed(2) + "%";
+    records.push(record);
+
+
+    localStorage.setItem(
+        "productionRecords",
+        JSON.stringify(records)
+    );
+
+
+    displayRecords();
 
 
     alert("Production record saved successfully!");
 }
+
+function displayRecords() {
+
+    let records =
+        JSON.parse(localStorage.getItem("productionRecords")) || [];
+
+
+    let table =
+        document.getElementById("productionTable");
+
+
+    table.innerHTML = "";
+
+
+    records.forEach(function(record) {
+
+        let row = table.insertRow();
+
+
+        row.insertCell(0).innerText = record.date;
+        row.insertCell(1).innerText = record.unit;
+        row.insertCell(2).innerText = record.line;
+        row.insertCell(3).innerText = record.style;
+        row.insertCell(4).innerText = record.target;
+        row.insertCell(5).innerText = record.production;
+        row.insertCell(6).innerText =
+            record.efficiency + "%";
+
+    });
+
+}
+
+displayRecords();
