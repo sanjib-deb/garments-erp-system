@@ -1,3 +1,4 @@
+let editingIndex = null;
 function calculateEfficiency() {
 
     let target = document.getElementById("target").value;
@@ -133,11 +134,11 @@ function displayRecords() {
 }
 
 displayRecords();
+
 function editProduction(index) {
 
     let records =
         JSON.parse(localStorage.getItem("productionRecords")) || [];
-
 
     let record = records[index];
 
@@ -164,16 +165,15 @@ function editProduction(index) {
     calculateEfficiency();
 
 
-    records.splice(index, 1);
+    editingIndex = index;
 
 
-    localStorage.setItem(
-        "productionRecords",
-        JSON.stringify(records)
-    );
+    document.getElementById("updateButton").style.display =
+        "inline-block";
 
 
-    displayRecords();
+    document.getElementById("saveButton").style.display =
+        "none";
 
 }
 
@@ -197,5 +197,79 @@ function deleteProduction(index) {
         displayRecords();
 
     }
+
+}
+
+function updateProduction() {
+
+    let records =
+        JSON.parse(localStorage.getItem("productionRecords")) || [];
+
+
+    if (editingIndex === null) {
+
+        return;
+    }
+
+
+    let date = document.getElementById("date").value;
+    let unit = document.getElementById("unit").value;
+    let line = document.getElementById("line").value;
+    let style = document.getElementById("style").value;
+    let target = document.getElementById("target").value;
+    let production = document.getElementById("production").value;
+
+
+    if (
+        date == "" ||
+        line == "" ||
+        style == "" ||
+        target == "" ||
+        production == ""
+    ) {
+
+        alert("Please fill all required fields.");
+
+        return;
+    }
+
+
+    let efficiency = (production / target) * 100;
+
+
+    records[editingIndex] = {
+
+        date: date,
+        unit: unit,
+        line: line,
+        style: style,
+        target: target,
+        production: production,
+        efficiency: efficiency.toFixed(2)
+
+    };
+
+
+    localStorage.setItem(
+        "productionRecords",
+        JSON.stringify(records)
+    );
+
+
+    editingIndex = null;
+
+
+    document.getElementById("updateButton").style.display =
+        "none";
+
+
+    document.getElementById("saveButton").style.display =
+        "inline-block";
+
+
+    displayRecords();
+
+
+    alert("Production record updated successfully!");
 
 }
