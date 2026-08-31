@@ -1,25 +1,21 @@
 function calculateEfficiency() {
 
     let target = document.getElementById("target").value;
-
     let production = document.getElementById("production").value;
 
-
-    if (target == 0 || target == "") {
+    if (target == "" || target == 0) {
 
         document.getElementById("efficiency").innerText = "0%";
 
         return;
     }
 
-
     let efficiency = (production / target) * 100;
-
 
     document.getElementById("efficiency").innerText =
         efficiency.toFixed(2) + "%";
-
 }
+
 
 function saveProduction() {
 
@@ -31,7 +27,13 @@ function saveProduction() {
     let production = document.getElementById("production").value;
 
 
-    if (date == "" || line == "" || style == "" || target == "" || production == "") {
+    if (
+        date == "" ||
+        line == "" ||
+        style == "" ||
+        target == "" ||
+        production == ""
+    ) {
 
         alert("Please fill all required fields.");
 
@@ -54,9 +56,9 @@ function saveProduction() {
     row.insertCell(3).innerText = style;
     row.insertCell(4).innerText = target;
     row.insertCell(5).innerText = production;
-    row.insertCell(6).innerText = efficiency.toFixed(2) + "%";
+    row.insertCell(6).innerText =
+        efficiency.toFixed(2) + "%";
 
 
     alert("Production record saved successfully!");
-
 }
